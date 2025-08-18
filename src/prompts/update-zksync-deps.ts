@@ -1,5 +1,6 @@
 export const updateZksyncDepsPrompt = {
   name: "update-zksync-deps",
+  description: "Updates zkSync dependencies in Cargo.toml to match latest versions from anvil-zksync",
   handler: async () => {
     const instruction = `# Update zkSync Dependencies
 

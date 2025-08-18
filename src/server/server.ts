@@ -8,7 +8,7 @@ export function createServer() {
   });
 
   // Register prompts
-  server.prompt(updateZksyncDepsPrompt.name, updateZksyncDepsPrompt.handler);
+  server.prompt(updateZksyncDepsPrompt.name, updateZksyncDepsPrompt.description, updateZksyncDepsPrompt.handler);
 
   return server;
 }
