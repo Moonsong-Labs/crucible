@@ -9,13 +9,23 @@ export function createServer() {
   });
 
   // Register prompts
-  server.prompt(updateZksyncDepsPrompt.name, updateZksyncDepsPrompt.description, updateZksyncDepsPrompt.handler);
+  server.registerPrompt(
+    updateZksyncDepsPrompt.name,
+    {
+      title: updateZksyncDepsPrompt.name,
+      description: updateZksyncDepsPrompt.description,
+    },
+    updateZksyncDepsPrompt.handler
+  );
 
   // Register tools
-  server.tool(
+  server.registerTool(
     fetchCommitHistoryTool.name,
-    fetchCommitHistoryTool.description,
-    fetchCommitHistoryTool.inputSchema,
+    {
+      title: fetchCommitHistoryTool.name,
+      description: fetchCommitHistoryTool.description,
+      inputSchema: fetchCommitHistoryTool.inputSchema,
+    },
     fetchCommitHistoryTool.handler
   );
 
