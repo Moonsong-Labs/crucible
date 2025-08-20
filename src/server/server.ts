@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { updateZksyncDepsPrompt } from "../prompts/update-zksync-deps.js";
 import { fetchCommitHistoryTool } from "../tools/fetch-commit-history.js";
+import { detectConflictsTool } from "../tools/detect-conflicts.js";
 
 export function createServer() {
   const server = new McpServer({
@@ -27,6 +28,16 @@ export function createServer() {
       inputSchema: fetchCommitHistoryTool.inputSchema,
     },
     fetchCommitHistoryTool.handler
+  );
+
+  server.registerTool(
+    detectConflictsTool.name,
+    {
+      title: detectConflictsTool.name,
+      description: detectConflictsTool.description,
+      inputSchema: detectConflictsTool.inputSchema,
+    },
+    detectConflictsTool.handler
   );
 
   return server;
