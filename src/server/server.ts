@@ -1,5 +1,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { updateZksyncDepsPrompt } from "../prompts/update-zksync-deps.js";
+import { upstreamInitPrompt } from "../prompts/upstream-init.js";
 import { fetchCommitHistoryTool } from "../tools/fetch-commit-history.js";
 import { detectConflictsTool } from "../tools/detect-conflicts.js";
 
@@ -17,6 +18,15 @@ export function createServer() {
       description: updateZksyncDepsPrompt.description,
     },
     updateZksyncDepsPrompt.handler
+  );
+
+  server.registerPrompt(
+    upstreamInitPrompt.name,
+    {
+      title: upstreamInitPrompt.name,
+      description: upstreamInitPrompt.description,
+    },
+    upstreamInitPrompt.handler
   );
 
   // Register tools
